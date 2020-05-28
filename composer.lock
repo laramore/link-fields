@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "498d310fcff048927517a2c6adc32694",
+    "content-hash": "daaa232093897ba526bd4746e323a7aa",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -454,22 +454,22 @@
         },
         {
             "name": "laramore/fields",
-            "version": "v0.13.2",
+            "version": "v0.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laramore/fields.git",
-                "reference": "80927411cd2d1a9b6436e03d92b36f0eb57e69f8"
+                "reference": "9708d8b3e94c9380d37dcfc5e81817a69ad1d8e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laramore/fields/zipball/80927411cd2d1a9b6436e03d92b36f0eb57e69f8",
-                "reference": "80927411cd2d1a9b6436e03d92b36f0eb57e69f8",
+                "url": "https://api.github.com/repos/laramore/fields/zipball/9708d8b3e94c9380d37dcfc5e81817a69ad1d8e1",
+                "reference": "9708d8b3e94c9380d37dcfc5e81817a69ad1d8e1",
                 "shasum": ""
             },
             "require": {
                 "illuminate/database": ">=5.5",
-                "laramore/proxies": "^0.5.0",
-                "laramore/types": "^0.6.2",
+                "laramore/proxies": "~0.6",
+                "laramore/types": "~0.7",
                 "nesbot/carbon": ">=1.0",
                 "php": ">=7.0.8",
                 "symfony/http-kernel": ">=3.4"
@@ -522,24 +522,24 @@
                 "table",
                 "validations"
             ],
-            "time": "2020-05-17T09:58:29+00:00"
+            "time": "2020-05-27T13:55:47+00:00"
         },
         {
             "name": "laramore/proxies",
-            "version": "v0.5.0",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laramore/proxies.git",
-                "reference": "fab626966f84a8be817ba04cda5411109d49903a"
+                "reference": "efe354b5892ab2c68bd932d7371c11fd7fa2d0d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laramore/proxies/zipball/fab626966f84a8be817ba04cda5411109d49903a",
-                "reference": "fab626966f84a8be817ba04cda5411109d49903a",
+                "url": "https://api.github.com/repos/laramore/proxies/zipball/efe354b5892ab2c68bd932d7371c11fd7fa2d0d0",
+                "reference": "efe354b5892ab2c68bd932d7371c11fd7fa2d0d0",
                 "shasum": ""
             },
             "require": {
-                "laramore/base": "^0.7.1",
+                "laramore/base": "~0.7",
                 "php": ">=7.0.8"
             },
             "require-dev": {
@@ -589,24 +589,77 @@
                 "table",
                 "validations"
             ],
-            "time": "2020-05-08T18:10:40+00:00"
+            "time": "2020-05-21T18:24:56+00:00"
         },
         {
-            "name": "laramore/types",
-            "version": "v0.6.2",
+            "name": "laramore/text-fields",
+            "version": "v0.2.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laramore/types.git",
-                "reference": "3cc3fc4dc349174b26a9211d2697ee64cc1d1b93"
+                "url": "https://github.com/laramore/text-fields.git",
+                "reference": "07b45b9cef5f2cbd2d1455a47f88e4657bd9d071"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laramore/types/zipball/3cc3fc4dc349174b26a9211d2697ee64cc1d1b93",
-                "reference": "3cc3fc4dc349174b26a9211d2697ee64cc1d1b93",
+                "url": "https://api.github.com/repos/laramore/text-fields/zipball/07b45b9cef5f2cbd2d1455a47f88e4657bd9d071",
+                "reference": "07b45b9cef5f2cbd2d1455a47f88e4657bd9d071",
                 "shasum": ""
             },
             "require": {
-                "laramore/base": "^0.7.0",
+                "laramore/fields": "~0.16",
+                "php": ">=7.0.8"
+            },
+            "require-dev": {
+                "phpmd/phpmd": ">=2.7",
+                "phpstan/phpstan": ">=0.9.2",
+                "phpunit/phpunit": ">=6.5",
+                "squizlabs/php_codesniffer": ">=3.5"
+            },
+            "suggest": {
+                "laramore/migrations": "Generate automatically all your migrations"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laramore\\Providers\\TextProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laramore\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "NastuzziSamy",
+                    "email": "samy@nastuzzi.fr"
+                }
+            ],
+            "description": "Add multiple text fields for Laramore",
+            "time": "2020-05-28T10:33:28+00:00"
+        },
+        {
+            "name": "laramore/types",
+            "version": "v0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laramore/types.git",
+                "reference": "34a182f767e7f40450ea3a1421da25ede6bc6538"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laramore/types/zipball/34a182f767e7f40450ea3a1421da25ede6bc6538",
+                "reference": "34a182f767e7f40450ea3a1421da25ede6bc6538",
+                "shasum": ""
+            },
+            "require": {
+                "laramore/base": "~0.7",
                 "php": ">=7.0.8"
             },
             "require-dev": {
@@ -660,7 +713,7 @@
                 "model",
                 "types"
             ],
-            "time": "2020-05-15T18:44:36+00:00"
+            "time": "2020-05-21T18:21:05+00:00"
         },
         {
             "name": "nesbot/carbon",

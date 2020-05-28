@@ -10,7 +10,8 @@
     },
     "require": {
         "php": ">=7.0.8",
-        "laramore/fields": "~0.15"
+        "laramore/fields": "~0.15",
+        "laramore/text-fields": "~0.2"
     },
     "authors": [
         {
