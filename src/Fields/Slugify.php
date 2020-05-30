@@ -11,40 +11,33 @@
 namespace Laramore\Fields;
 
 use Laramore\Contracts\{
-    Eloquent\LaramoreModel, Field\ExtraField, Field\LinkField
+    Eloquent\LaramoreModel, Field\ExtraField, Field\LinkField, Field\Constraint\UniqueField
 };
+use Laramore\Fields\Constraint\UniqueConstraintHandler;
+use Laramore\Traits\Field\BasedOnFields;
 
-class Slugify extends Body implements ExtraField, LinkField
+class Slugify extends Body implements ExtraField, LinkField, UniqueField
 {
-    /**
-     * Field to base on.
-     *
-     * @var Char.
-     */
-    protected $basedOn;
+    use BasedOnFields;
 
     /**
-     * This field is linked and based on something.
-     * Define classes or interfaces the class needs to based on.
+     * Create a Constraint handler for this meta.
      *
-     * @param  string|array $value
-     * @return mixed
+     * @return void
      */
-    public function basedOn($value)
+    protected function setConstraintHandler()
     {
-        $this->checkNeedsToBeUnlocked();
+        $this->constraintHandler = new UniqueConstraintHandler($this);
+    }
 
-        $value = \is_string($value) ? [$value] : $value;
-
-        foreach ($value as $class) {
-            if (!\class_exists($class)) {
-                throw new \LogicException("The field {$this->getName()} requires class names. Got `$class`.");
-            }
-        }
-
-        $this->basedOn = $value;
-
-        return $this;
+    /**
+     * Return the relation handler for this meta.
+     *
+     * @return UniqueConstraintHandler
+     */
+    public function getConstraintHandler(): UniqueConstraintHandler
+    {
+        return parent::getConstraintHandler();
     }
 
     /**
@@ -61,7 +54,7 @@ class Slugify extends Body implements ExtraField, LinkField
             }
         }
 
-        return false;
+        return $model->hasAttributeValue($this->getName());
     }
 
     /**
@@ -72,7 +65,7 @@ class Slugify extends Body implements ExtraField, LinkField
      */
     public function get(LaramoreModel $model)
     {
-        $this->retrieve($model);
+        return $this->retrieve($model);
     }
 
     /**
@@ -97,9 +90,11 @@ class Slugify extends Body implements ExtraField, LinkField
     public function retrieve(LaramoreModel $model)
     {
         if (!$model->hasAttributeValue($name = $this->getName())) {
-            $this->set(
-                $model, $this->basedOn->get($model)
-            );
+            $value = \implode($this->separator ?: '-', \array_map(function ($field) use ($model) {
+                return $field->getOwner()->getFieldValue($field, $model);
+            }, $this->basedOn));
+
+            $this->getOwner()->setFieldValue($this, $model, $value);
         }
 
         return $model->getAttributeValue($name);
