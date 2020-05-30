@@ -29,7 +29,7 @@ trait BasedOnFields
      */
     public function basedOn($value)
     {
-        $this->checkNeedsToBeUnlocked();
+        $this->needsToBeUnlocked();
 
         $value = (!\is_array($value) || ($value instanceof Field)) ? [$value] : $value;
 
@@ -57,7 +57,7 @@ trait BasedOnFields
             throw new \LogicException("The field {$this->getName()} requires a basedOn field.");
         } else {
             $this->basedOn = \array_map(function ($value) {
-                return ($value instanceof Field) ? $value : $this->getMeta()->get($value);
+                return ($value instanceof Field) ? $value : $this->getMeta()->getField($value);
             }, $this->basedOn);
         }
     }

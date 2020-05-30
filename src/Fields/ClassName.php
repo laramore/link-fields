@@ -30,7 +30,7 @@ class ClassName extends Char implements LinkField
      */
     public function basedOn($value)
     {
-        $this->checkNeedsToBeUnlocked();
+        $this->needsToBeUnlocked();
 
         $value = \is_string($value) ? [$value] : $value;
 

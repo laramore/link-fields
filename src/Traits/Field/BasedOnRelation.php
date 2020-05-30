@@ -29,7 +29,7 @@ trait BasedOnRelation
      */
     public function basedOn($value)
     {
-        $this->checkNeedsToBeUnlocked();
+        $this->needsToBeUnlocked();
 
         if (!\is_string($value) && !($value instanceof RelationField)) {
             throw new \LogicException("The field {$this->getName()} requires a basedOn relation field. Got `$value`.");
@@ -52,7 +52,7 @@ trait BasedOnRelation
         if (\is_null($this->basedOn)) {
             throw new \LogicException("The field {$this->getName()} requires a basedOn relation field.");
         } else if (!($this->basedOn instanceof RelationField)) {
-            $this->basedOn = $this->getMeta()->get($this->basedOn);
+            $this->basedOn = $this->getMeta()->getField($this->basedOn);
         }
     }
 }

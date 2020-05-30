@@ -32,7 +32,7 @@ class Append extends BaseField implements LinkField, ExtraField
      */
     public function basedOn($value)
     {
-        $this->checkNeedsToBeUnlocked();
+        $this->needsToBeUnlocked();
 
         if (!\is_callable($value)) {
             throw new \LogicException("The field {$this->getName()} requires a callable. Got `$value`.");
