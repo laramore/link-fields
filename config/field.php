@@ -44,7 +44,7 @@ return [
             'type' => 'reversed_relation',
         ],
         'slugify' => [
-            'type' => 'char',
+            'type' => 'slug',
             'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
             'based_on' => 'name',
         ],
