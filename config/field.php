@@ -32,6 +32,9 @@ return [
                 ],
             ],
         ],
+        'model_enum' => [
+            'type' => 'text_enum',
+        ],
         'model_name' => [
             'type' => 'char',
             'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
