@@ -10,7 +10,9 @@
 
 namespace Laramore\Elements;
 
-use Laramore\Contracts\Eloquent\LaramoreModel;
+use Laramore\Contracts\Eloquent\{
+    LaramoreMeta, LaramoreModel
+};
 
 class ModelEnumElement extends EnumElement
 {
@@ -24,6 +26,7 @@ class ModelEnumElement extends EnumElement
         if (!\is_subclass_of($class, LaramoreModel::class)) {
             throw new \LogicException("A model enum only works with Laramore models. `$class` given");
         }
+
          $meta = $class::getMeta();
 
         parent::__construct($class, $meta->getModelClassName(), $meta->getDescription());
@@ -31,7 +34,12 @@ class ModelEnumElement extends EnumElement
         $this->set('class', $class);
     }
 
-    public function getMeta()
+    /**
+     * Return the meta used by the model.
+     *
+     * @return LaramoreMeta
+     */
+    public function getMeta(): LaramoreMeta
     {
         return $this->get('class')::getMeta();
     }

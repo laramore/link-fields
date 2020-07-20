@@ -49,6 +49,7 @@ return [
         'slugify' => [
             'type' => 'slug',
             'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
+            'separator' => '-',
             'based_on' => 'name',
         ],
     ],

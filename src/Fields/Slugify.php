@@ -43,10 +43,10 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
     /**
      * Indicate if the field has a value.
      *
-     * @param  LaramoreModel $model
+     * @param LaramoreModel|array|\ArrayAccess $model
      * @return mixed
      */
-    public function has(LaramoreModel $model)
+    public function has($model)
     {
         foreach ($this->basedOn as $field) {
             if ($field->has($model)) {
@@ -54,18 +54,37 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
             }
         }
 
-        return $model->hasAttributeValue($this->getName());
+        return $this->has($model);
     }
 
     /**
      * Get the value definied by the field.
      *
-     * @param  LaramoreModel $model
+     * @param LaramoreModel|array|\ArrayAccess $model
      * @return mixed
      */
-    public function get(LaramoreModel $model)
+    public function get($model)
     {
-        return $this->retrieve($model);
+        if (!$this->has($model)) {
+            return $this->retrieve($model);
+        }
+
+        return parent::get($model);
+    }
+
+    /**
+     * Retrieve values from the relation field.
+     *
+     * @param LaramoreModel|array|\ArrayAccess $model
+     * @return mixed
+     */
+    public function retrieve($model)
+    {
+        $value = \implode($this->separator, \array_map(function ($field) use ($model) {
+            return $field->get($model);
+        }, $this->basedOn));
+
+        $this->set($model, $value);
     }
 
     /**
@@ -79,24 +98,5 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
 
         $this->getMeta()->getModelClass()::saving([$this, 'retrieve']);
         $this->getMeta()->getModelClass()::updating([$this, 'retrieve']);
-    }
-
-    /**
-     * Retrieve values from the relation field.
-     *
-     * @param  LaramoreModel $model
-     * @return mixed
-     */
-    public function retrieve(LaramoreModel $model)
-    {
-        if (!$model->hasAttributeValue($name = $this->getName())) {
-            $value = \implode($this->separator ?: '-', \array_map(function ($field) use ($model) {
-                return $field->getOwner()->getFieldValue($field, $model);
-            }, $this->basedOn));
-
-            $this->getOwner()->setFieldValue($this, $model, $value);
-        }
-
-        return $model->getAttributeValue($name);
     }
 }
