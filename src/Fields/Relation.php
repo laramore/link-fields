@@ -15,7 +15,7 @@ use Laramore\Contracts\Eloquent\{
     LaramoreModel, LaramoreBuilder
 };
 use Laramore\Contracts\Field\{
-    RelationField, AttributeField, Constraint\Constraint
+    RelationField, ReversedField, AttributeField, Constraint\Constraint
 };
 use Laramore\Elements\{
     TypeElement, OperatorElement
@@ -27,6 +27,13 @@ use Laramore\Traits\Field\{
 class Relation extends BaseField implements RelationField
 {
     use ModelRelation, BasedOnRelation;
+
+    /**
+     * The developer can define a reversed field.
+     * 
+     * @var RelationField
+     */
+    protected $reversedField;
 
     /**
      * Check that this relation has a base.
@@ -75,6 +82,20 @@ class Relation extends BaseField implements RelationField
      */
     public function isRelationHeadOn(): bool
     {
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
+    }
+
+    /**
+     * Return the reversed field.
+     *
+     * @return RelationField
+     */
+    public function getReversedField(): RelationField
+    {
+        if (!\is_null($this->reversedField)) {
+            return $this->reversedField;
+        }
+
         return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
@@ -223,7 +244,7 @@ class Relation extends BaseField implements RelationField
      * @param  boolean         $not
      * @return LaramoreBuilder
      */
-    public function whereNull(LaramoreBuilder $builder, $value=null, string $boolean='and', bool $not=false): LaramoreBuilder
+    public function whereNull(LaramoreBuilder $builder, string $boolean='and', bool $not=false): LaramoreBuilder
     {
         return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
@@ -236,7 +257,7 @@ class Relation extends BaseField implements RelationField
      * @param  string          $boolean
      * @return LaramoreBuilder
      */
-    public function whereNotNull(LaramoreBuilder $builder, $value=null, string $boolean='and'): LaramoreBuilder
+    public function whereNotNull(LaramoreBuilder $builder, string $boolean='and'): LaramoreBuilder
     {
         return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
