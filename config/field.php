@@ -1,5 +1,7 @@
 <?php
 
+namespace Laramore\Fields;
+
 use Illuminate\Support\Facades\Schema;
 use Laramore\Contracts\Eloquent\LaramoreModel;
 
@@ -15,14 +17,14 @@ return [
     */
 
     'configurations' => [
-        'append' => [
+        Append::class => [
             'type' => 'append',
         ],
-        'class_name' => [
+        ClassName::class => [
             'type' => 'char',
             'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         ],
-        'counter' => [
+        Counter::class => [
             'type' => 'increment',
             'step' => 1,
             'proxy' => [
@@ -32,21 +34,21 @@ return [
                 ],
             ],
         ],
-        'model_enum' => [
+        ModelEnum::class => [
             'type' => 'text_enum',
         ],
-        'model_name' => [
+        ModelName::class => [
             'type' => 'char',
             'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
             'based_on' => [LaramoreModel::class],
         ],
-        'relation' => [
+        Relation::class => [
             'type' => 'relation',
         ],
-        'reversed_relation' => [
+        ReversedRelation::class => [
             'type' => 'reversed_relation',
         ],
-        'slugify' => [
+        Slugify::class => [
             'type' => 'slug',
             'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
             'separator' => '-',
