@@ -41,6 +41,20 @@ trait BasedOnRelation
     }
 
     /**
+     * Call based on method.
+     *
+     * @param string $method
+     * @param array  $args
+     * @return mixed
+     */
+    public function callBasedOn(string $method, array $args)
+    {
+        $this->needsToBeOwned();
+
+        return \call_user_func([$this->basedOn, $method], ...$args);
+    }
+
+    /**
      * Require a basedOn value.
      *
      * @return void

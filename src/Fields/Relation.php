@@ -50,7 +50,7 @@ class Relation extends BaseField implements RelationField
     public function getType(): TypeElement
     {
         if ($this->isOwned()) {
-            return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+            return $this->callBasedOn(__FUNCTION__, \func_get_args());
         }
 
         return parent::getType();
@@ -64,9 +64,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getNative(): string
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -77,9 +75,7 @@ class Relation extends BaseField implements RelationField
      */
     public function isRelationHeadOn(): bool
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -89,9 +85,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getSourceModel(): string
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -101,9 +95,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getSourceAttribute(): AttributeField
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -113,9 +105,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getTargetModel(): string
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -125,9 +115,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getTargetAttribute(): AttributeField
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -137,9 +125,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getSource(): Constraint
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -149,9 +135,7 @@ class Relation extends BaseField implements RelationField
      */
     public function getTarget(): Constraint
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -162,9 +146,7 @@ class Relation extends BaseField implements RelationField
      */
     public function dry($value)
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -175,9 +157,7 @@ class Relation extends BaseField implements RelationField
      */
     public function cast($value)
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -188,9 +168,7 @@ class Relation extends BaseField implements RelationField
      */
     public function transform($value)
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -201,9 +179,7 @@ class Relation extends BaseField implements RelationField
      */
     public function serialize($value)
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -249,9 +225,7 @@ class Relation extends BaseField implements RelationField
      */
     public function whereNull(LaramoreBuilder $builder, $value=null, string $boolean='and', bool $not=false): LaramoreBuilder
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -264,9 +238,7 @@ class Relation extends BaseField implements RelationField
      */
     public function whereNotNull(LaramoreBuilder $builder, $value=null, string $boolean='and'): LaramoreBuilder
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**LaramoreBuilder
@@ -281,9 +253,7 @@ class Relation extends BaseField implements RelationField
     public function whereIn(LaramoreBuilder $builder, Collection $value=null,
                             string $boolean='and', bool $notIn=false): LaramoreBuilder
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -296,9 +266,7 @@ class Relation extends BaseField implements RelationField
      */
     public function whereNotIn(LaramoreBuilder $builder, Collection $value=null, string $boolean='and'): LaramoreBuilder
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 
     /**
@@ -313,8 +281,6 @@ class Relation extends BaseField implements RelationField
     public function where(LaramoreBuilder $builder, OperatorElement $operator,
                           $value=null, string $boolean='and'): LaramoreBuilder
     {
-        $this->needsToBeOwned();
-
-        return \call_user_func([$this->basedOn, __FUNCTION__], ...\func_get_args());
+        return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }
 }
