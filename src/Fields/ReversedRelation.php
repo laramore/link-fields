@@ -24,7 +24,7 @@ use Laramore\Traits\Field\{
     ModelRelation, BasedOnRelation
 };
 
-class Relation extends BaseField implements RelationField
+class ReversedRelation extends BaseField implements RelationField
 {
     use ModelRelation, BasedOnRelation;
 

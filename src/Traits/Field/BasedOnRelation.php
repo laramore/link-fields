@@ -36,6 +36,7 @@ trait BasedOnRelation
         }
 
         $this->basedOn = $value;
+        $this->options = $value->getOptions();
 
         return $this;
     }

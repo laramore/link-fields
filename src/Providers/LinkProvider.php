@@ -27,9 +27,5 @@ class LinkProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__."/../../config/field.php", "field",
         );
-
-        $this->mergeConfigFrom(
-            __DIR__."/../../config/type.php", "type",
-        );
     }
 }
