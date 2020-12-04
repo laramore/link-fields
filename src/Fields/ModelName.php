@@ -10,6 +10,18 @@
 
 namespace Laramore\Fields;
 
+use Laramore\Facades\Meta;
+
+
 class ModelName extends ClassName
 {
+    /**
+     * Return possible classes.
+     *
+     * @return array<string>
+     */
+    public function getValues(): array
+    {
+        return \array_keys(Meta::all());
+    }
 }

@@ -58,4 +58,14 @@ class ClassName extends Char implements LinkField
             throw new \LogicException("The field {$this->getName()} requires basedOn class names.");
         }
     }
+
+    /**
+     * Return possible classes.
+     *
+     * @return array<string>
+     */
+    public function getValues(): array
+    {
+        return \is_string($this->basedOn) ? [$this->basedOn] : $this->basedOn;
+    }
 }
