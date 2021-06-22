@@ -6,36 +6,36 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default text fields
+    | Default link validations
     |--------------------------------------------------------------------------
     |
-    | This option defines the default text fields.
+    | This option defines the default link validations.
     |
     */
 
     Append::class => [
-        'formater' => null,
+
     ],
     ClassName::class => [
-        'formater' => 'randomElement',
+
     ],
     Counter::class => [
-        'formater' => 'randomNumber',
+
     ],
     ModelEnum::class => [
-        'formater' => 'randomElement',
+
     ],
     ModelName::class => [
-        'formater' => 'randomElement',
+
     ],
     Relation::class => [
-        'formater' => null,
+
     ],
     ReversedRelation::class => [
-        'formater' => null,
+
     ],
     Slugify::class => [
-        'formater' => null,
+
     ],
     
 ];
