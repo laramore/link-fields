@@ -10,6 +10,7 @@
 
 namespace Laramore\Fields;
 
+use Illuminate\Support\Str;
 use Laramore\Contracts\{
     Eloquent\LaramoreModel, Field\ExtraField, Field\LinkField, Field\Constraint\UniqueField
 };
@@ -54,7 +55,7 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
             }
         }
 
-        return $this->has($model);
+        return parent::has($model);
     }
 
     /**
@@ -65,8 +66,10 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
      */
     public function get($model)
     {
-        if (!$this->has($model)) {
-            return $this->retrieve($model);
+        if (! $this->has($model)) {
+            $value = $this->retrieve($model);
+
+            return $this->set($model, $value);
         }
 
         return parent::get($model);
@@ -81,10 +84,10 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
     public function retrieve($model)
     {
         $value = \implode($this->separator, \array_map(function ($field) use ($model) {
-            return $field->get($model);
+            return Str::snake($field->get($model), $this->separator);
         }, $this->basedOn));
 
-        $this->set($model, $value);
+        return preg_replace("/[^a-z0-9{$this->separator}]/", '', $value);
     }
 
     /**
@@ -96,7 +99,7 @@ class Slugify extends Body implements ExtraField, LinkField, UniqueField
     {
         parent::locking();
 
-        $this->getMeta()->getModelClass()::saving([$this, 'retrieve']);
-        $this->getMeta()->getModelClass()::updating([$this, 'retrieve']);
+        $this->getMeta()->getModelClass()::saving([$this, 'get']);
+        $this->getMeta()->getModelClass()::updating([$this, 'get']);
     }
 }
