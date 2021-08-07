@@ -28,7 +28,10 @@ return [
     ModelName::class => [
 
     ],
-    Relation::class => [
+    RelationToOne::class => [
+
+    ],
+    RelationToMany::class => [
 
     ],
     ReversedRelation::class => [
@@ -37,5 +40,5 @@ return [
     Slugify::class => [
 
     ],
-    
+
 ];

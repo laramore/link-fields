@@ -38,7 +38,8 @@ return [
             'length:maxLength', 'nullable', 'default',
         ],
     ],
-    Relation::class => null,
+    RelationToOne::class => null,
+    RelationToMany::class => null,
     ReversedRelation::class => null,
     Slugify::class => [
         'type' => 'char',
@@ -46,5 +47,5 @@ return [
             'length:maxLength', 'nullable', 'default',
         ],
     ],
-    
+
 ];

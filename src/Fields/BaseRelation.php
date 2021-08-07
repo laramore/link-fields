@@ -4,7 +4,7 @@
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
- * @copyright Copyright (c) 2020
+ * @copyright Copyright (c) 2021
  * @license MIT
  */
 
@@ -15,7 +15,7 @@ use Laramore\Contracts\Eloquent\{
     LaramoreModel, LaramoreBuilder
 };
 use Laramore\Contracts\Field\{
-    RelationField, ReversedField, AttributeField, Constraint\Constraint
+    RelationField, AttributeField, Constraint\Constraint
 };
 use Laramore\Elements\{
     TypeElement, OperatorElement
@@ -24,13 +24,13 @@ use Laramore\Traits\Field\{
     ModelRelation, BasedOnRelation
 };
 
-class Relation extends BaseField implements RelationField
+abstract class BaseRelation extends BaseField implements RelationField
 {
     use ModelRelation, BasedOnRelation;
 
     /**
      * The developer can define a reversed field.
-     * 
+     *
      * @var RelationField
      */
     protected $reversedField;
@@ -155,28 +155,6 @@ class Relation extends BaseField implements RelationField
      * @return Constraint
      */
     public function getTarget(): Constraint
-    {
-        return $this->callBasedOn(__FUNCTION__, \func_get_args());
-    }
-
-    /**
-     * Dry the value in a simple format.
-     *
-     * @param  mixed $value
-     * @return mixed
-     */
-    public function dry($value)
-    {
-        return $this->callBasedOn(__FUNCTION__, \func_get_args());
-    }
-
-    /**
-     * Cast the value in the correct format.
-     *
-     * @param  mixed $value
-     * @return mixed
-     */
-    public function cast($value)
     {
         return $this->callBasedOn(__FUNCTION__, \func_get_args());
     }

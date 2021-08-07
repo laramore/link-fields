@@ -28,14 +28,14 @@ return [
     ModelName::class => [
         'formater' => 'randomElement',
     ],
-    Relation::class => [
+    RelationToOne::class => [
         'formater' => null,
     ],
-    ReversedRelation::class => [
+    RelationToMany::class => [
         'formater' => null,
     ],
     Slugify::class => [
         'formater' => null,
     ],
-    
+
 ];

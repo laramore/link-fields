@@ -36,7 +36,7 @@ return [
     ],
     ClassName::class => [
         'options' => [
-            'visible', 'fillable', 'required',
+            'select', 'visible', 'fillable', 'required',
         ],
         'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         'proxy' => [
@@ -55,7 +55,7 @@ return [
     ],
     Counter::class => [
         'options' => [
-            'visible', 'required',
+            'select', 'visible', 'required',
         ],
         'step' => 1,
         'proxy' => [
@@ -75,7 +75,7 @@ return [
     ],
     ModelEnum::class => [
         'options' => [
-            'visible', 'fillable', 'required',
+            'select', 'visible', 'fillable', 'required',
         ],
         'elements_proxy' => [
             'class' => \Laramore\Proxies\EnumProxy::class,
@@ -124,7 +124,7 @@ return [
     ],
     ModelName::class => [
         'options' => [
-            'visible', 'fillable', 'required',
+            'select', 'visible', 'fillable', 'required',
         ],
         'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         'based_on' => [LaramoreModel::class],
@@ -142,19 +142,19 @@ return [
             ],
         ],
     ],
-    Relation::class => [
+    RelationToOne::class => [
         'options' => [
             'visible', 'fillable',
         ],
     ],
-    ReversedRelation::class => [
+    RelationToMany::class => [
         'options' => [
             'visible', 'fillable',
         ],
     ],
     Slugify::class => [
         'options' => [
-            'visible', 'fillable', 'required', 'slug',
+            'select', 'visible', 'fillable', 'required', 'slug',
         ],
         'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         'separator' => '-',
@@ -177,5 +177,5 @@ return [
             'length:maxLength', 'nullable', 'default',
         ],
     ],
-    
+
 ];
