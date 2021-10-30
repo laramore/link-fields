@@ -17,12 +17,9 @@ use Laramore\Contracts\Field\{
     LinkField, ExtraField
 };
 use Laramore\Elements\OperatorElement;
-use Laramore\Traits\Field\ModelExtra;
 
 class Append extends BaseField implements LinkField, ExtraField
 {
-    use ModelExtra;
-
     /**
      * Class or interface on which to base on.
      *
@@ -87,12 +84,12 @@ class Append extends BaseField implements LinkField, ExtraField
     }
 
     /**
-     * Retrieve values from the relation field.
+     * Resolve values from the relation field.
      *
      * @param LaramoreModel|array|\ArrayAccess $model
      * @return mixed
      */
-    public function retrieve($model)
+    public function resolve($model)
     {
         if ($this->basedOn instanceof \Closure) {
             return call_user_func($this->basedOn->bindTo($model, get_class($model)));

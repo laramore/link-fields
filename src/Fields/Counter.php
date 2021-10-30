@@ -54,12 +54,12 @@ class Counter extends Number implements IncrementField, ExtraField, LinkField
     }
 
     /**
-     * Retrieve values from the relation field.
+     * Resolve values from the relation field.
      *
      * @param  LaramoreModel $model
      * @return mixed
      */
-    public function retrieve(LaramoreModel $model)
+    public function resolve(LaramoreModel $model)
     {
         if (!$model->hasAttributeValue($name = $this->getName())) {
             $this->increment($model, $this->lastRecordValue($model));

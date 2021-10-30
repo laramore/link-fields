@@ -32,12 +32,12 @@ class RelationToOne extends BaseRelation
     }
 
     /**
-     * Retrieve values from the relation field.
+     * Resolve values from the relation field.
      *
      * @param LaramoreModel|array|\ArrayAccess $model
      * @return mixed
      */
-    public function retrieve($model)
+    public function resolve($model)
     {
         if ($model instanceof LaramoreModel) {
             return $this->relate($model)->first();
