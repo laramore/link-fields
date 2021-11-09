@@ -10,6 +10,7 @@
 
 namespace Laramore\Fields;
 
+use Illuminate\Support\Collection;
 use Laramore\Contracts\Eloquent\LaramoreModel;
 
 class RelationToOne extends BaseRelation
@@ -28,16 +29,20 @@ class RelationToOne extends BaseRelation
             return $value;
         }
 
+        if ($value instanceof Collection) {
+            return $value->first();
+        }
+
         return new $modelClass($value);
     }
 
     /**
-     * Resolve values from the relation field.
+     * Retrieve values from the relation field.
      *
      * @param LaramoreModel|array|\ArrayAccess $model
      * @return mixed
      */
-    public function resolve($model)
+    public function retrieve($model)
     {
         if ($model instanceof LaramoreModel) {
             return $this->relate($model)->first();

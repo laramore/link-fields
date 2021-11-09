@@ -50,9 +50,9 @@ class ClassName extends Char implements LinkField
      *
      * @return void
      */
-    protected function locked()
+    protected function locking()
     {
-        parent::locked();
+        parent::locking();
 
         if (\is_null($this->basedOn) || \count($this->basedOn) === 0) {
             throw new \LogicException("The field {$this->getName()} requires basedOn class names.");

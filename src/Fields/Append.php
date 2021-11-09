@@ -48,20 +48,6 @@ class Append extends BaseField implements LinkField, ExtraField
     }
 
     /**
-     * Require a basedOn value.
-     *
-     * @return void
-     */
-    protected function locked()
-    {
-        parent::locked();
-
-        if (\is_null($this->basedOn)) {
-            throw new \LogicException("The field {$this->getName()} requires a basedOn callable.");
-        }
-    }
-
-    /**
      * Cast user value into field format.
      *
      * @param  mixed $value
@@ -92,10 +78,10 @@ class Append extends BaseField implements LinkField, ExtraField
     public function resolve($model)
     {
         if ($this->basedOn instanceof \Closure) {
-            return call_user_func($this->basedOn->bindTo($model, get_class($model)));
+            return call_user_func($this->basedOn->bindTo($model, get_class($model)), $model);
         }
 
-        return call_user_func([$model, $this->basedOn]);
+        return call_user_func([$model, $this->basedOn], $model);
     }
 
     /**

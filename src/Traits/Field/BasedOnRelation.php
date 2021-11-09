@@ -36,7 +36,6 @@ trait BasedOnRelation
         }
 
         $this->basedOn = $value;
-        $this->options = $value->getOptions();
 
         return $this;
     }
@@ -60,14 +59,32 @@ trait BasedOnRelation
      *
      * @return void
      */
+    protected function locking()
+    {
+        parent::locking();
+
+        if (\is_null($this->basedOn)) {
+            throw new \LogicException("The field {$this->getName()} requires a basedOn callable.");
+        } else if (!($this->basedOn instanceof RelationField)) {
+            $this->basedOn = $this->getMeta()->getField($this->basedOn);
+        }
+
+        $options = $this->options;
+        $this->options = $this->basedOn->getOptions();
+        $this->addOptions($options);
+    }
+
+    /**
+     * Require a basedOn value.
+     *
+     * @return void
+     */
     protected function owned()
     {
         parent::owned();
 
         if (\is_null($this->basedOn)) {
             throw new \LogicException("The field {$this->getName()} requires a basedOn relation field.");
-        } else if (!($this->basedOn instanceof RelationField)) {
-            $this->basedOn = $this->getMeta()->getField($this->basedOn);
         }
     }
 }

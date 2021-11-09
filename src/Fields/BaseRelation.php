@@ -36,20 +36,6 @@ abstract class BaseRelation extends BaseField implements RelationField
     protected $reversedField;
 
     /**
-     * Check that this relation has a base.
-     *
-     * @return void
-     */
-    protected function owned()
-    {
-        parent::owned();
-
-        if (\is_null($this->basedOn)) {
-            throw new \Exception('You must define a field to base on');
-        }
-    }
-
-    /**
      * Return the type object of the field.
      *
      * @return TypeElement
