@@ -18,7 +18,7 @@ return [
 
     Append::class => [
         'options' => [
-            'visible', 'fillable', 'required',
+            'visible', 'fillable', 'required', 'append',
         ],
         'proxy' => [
             'configurations' => [
