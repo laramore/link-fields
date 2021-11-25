@@ -5,13 +5,13 @@
     "license": "MIT",
     "config": {
         "platform": {
-            "php": "7.0.8"
+            "php": "7.3"
         }
     },
     "require": {
-        "php": ">=7.0.8",
+        "php": "^7.3|^8.0",
         "laramore/text-fields": ">=0.4",
-        "laramore/laramore": ">=0.18"
+        "laramore/laramore": ">=0.28.2"
     },
     "authors": [
         {

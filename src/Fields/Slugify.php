@@ -101,6 +101,10 @@ class Slugify extends Body implements LinkField, UniqueField
      */
     protected function locking()
     {
+        if (is_null($this->maxLength)) {
+            $this->maxLength = $this->basedOn->maxLength;
+        }
+
         parent::locking();
 
         $this->getMeta()->getModelClass()::saving([$this, 'get']);

@@ -38,7 +38,6 @@ return [
         'options' => [
             'select', 'visible', 'fillable', 'required',
         ],
-        'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         'proxy' => [
             'configurations' => [
                 'dry' => [
@@ -126,7 +125,6 @@ return [
         'options' => [
             'select', 'visible', 'fillable', 'required',
         ],
-        'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         'based_on' => [LaramoreModel::class],
         'proxy' => [
             'configurations' => [
@@ -156,7 +154,6 @@ return [
         'options' => [
             'select', 'visible', 'fillable', 'required', 'slug',
         ],
-        'max_length' => Schema::getFacadeRoot()::$defaultStringLength,
         'separator' => '-',
         'based_on' => 'name',
         'proxy' => [
