@@ -169,15 +169,14 @@ abstract class BaseRelation extends BaseField implements RelationField
 
     /**
      * Reverbate the relation into database or other fields.
-     * No reverbation here as it is a link field.
+     * It should be called by the set method.
      *
      * @param  LaramoreModel $model
-     * @param  mixed         $value
-     * @return mixed
+     * @return boolean
      */
-    public function reverbate(LaramoreModel $model, $value)
+    public function reverbate(LaramoreModel $model)
     {
-        return $value;
+        return false;
     }
 
     /**
