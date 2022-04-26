@@ -117,7 +117,7 @@ return [
         ],
         'migration_name' => 'char',
         'migration_property_keys' => [
-            'length:maxLength', 'nullable', 'default',
+            'length', 'nullable', 'default',
         ],
         'factory_name' => 'enum',
     ],
@@ -171,7 +171,7 @@ return [
         ],
         'migration_name' => 'char',
         'migration_property_keys' => [
-            'length:maxLength', 'nullable', 'default',
+            'length', 'nullable', 'default',
         ],
     ],
 

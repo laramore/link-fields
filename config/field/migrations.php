@@ -17,7 +17,7 @@ return [
     ClassName::class => [
         'type' => 'char',
         'property_keys' => [
-            'length:maxLength', 'nullable', 'default',
+            'length', 'nullable', 'default',
         ],
     ],
     Counter::class => [
@@ -29,13 +29,13 @@ return [
     ModelEnum::class => [
         'type' => 'enum',
         'property_keys' => [
-            'allowed:values', 'length:maxLength', 'nullable', 'default:defaultValue',
+            'allowed:values', 'length', 'nullable', 'default:defaultValue',
         ],
     ],
     ModelName::class => [
         'type' => 'char',
         'property_keys' => [
-            'length:maxLength', 'nullable', 'default',
+            'length', 'nullable', 'default',
         ],
     ],
     RelationToOne::class => null,
@@ -44,7 +44,7 @@ return [
     Slugify::class => [
         'type' => 'char',
         'property_keys' => [
-            'length:maxLength', 'nullable', 'default',
+            'length', 'nullable', 'default',
         ],
     ],
 

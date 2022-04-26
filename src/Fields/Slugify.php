@@ -101,9 +101,9 @@ class Slugify extends Body implements LinkField, UniqueField
      */
     protected function locking()
     {
-        if (is_null($this->maxLength)) {
-            $this->maxLength = array_sum(array_map(function ($field) {
-                return $field->maxLength;
+        if (is_null($this->length)) {
+            $this->length = array_sum(array_map(function ($field) {
+                return $field->length;
             }, $this->basedOn));
         }
 

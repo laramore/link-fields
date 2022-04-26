@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ad34210b8e3cb5e1985c80fb164b6ff1",
+    "content-hash": "47c8fea5e991199f5ad559894f5940b6",
     "packages": [
         {
             "name": "brick/math",
@@ -430,16 +430,16 @@
         },
         {
             "name": "laramore/laramore",
-            "version": "v0.28.3",
+            "version": "v0.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laramore/laramore.git",
-                "reference": "e9de51d696f57d4f0b09fe6a7d29d0025068ad1c"
+                "reference": "2607ca446221fceb4bec7ae3b5c5679564ce5fd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laramore/laramore/zipball/e9de51d696f57d4f0b09fe6a7d29d0025068ad1c",
-                "reference": "e9de51d696f57d4f0b09fe6a7d29d0025068ad1c",
+                "url": "https://api.github.com/repos/laramore/laramore/zipball/2607ca446221fceb4bec7ae3b5c5679564ce5fd8",
+                "reference": "2607ca446221fceb4bec7ae3b5c5679564ce5fd8",
                 "shasum": ""
             },
             "require": {
@@ -503,9 +503,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laramore/laramore/issues",
-                "source": "https://github.com/laramore/laramore/tree/v0.28.3"
+                "source": "https://github.com/laramore/laramore/tree/v0.31.0"
             },
-            "time": "2021-11-25T22:33:23+00:00"
+            "time": "2022-04-24T09:09:42+00:00"
         },
         {
             "name": "laramore/text-fields",
