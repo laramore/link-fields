@@ -77,6 +77,10 @@ class Append extends BaseField implements LinkField, ExtraField
      */
     public function resolve($model)
     {
+        if (is_null($this->basedOn)) {
+            return null;
+        }
+
         if ($this->basedOn instanceof \Closure) {
             return call_user_func($this->basedOn->bindTo($model, get_class($model)), $model);
         }
